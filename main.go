@@ -2,32 +2,37 @@ package main
 
 import (
 	"fmt"
-	"math"
 )
 
-func main() {
-	var a, b, c float64
-
-	fmt.Println("Введите коэффициент a:")
-	fmt.Scanln(&a)
-
-	fmt.Println("Введите коэффициент b:")
-	fmt.Scanln(&b)
-
-	fmt.Println("Введите коэффициент c:")
-	fmt.Scanln(&c)
-
-	discriminant := b*b - 4*a*c
-
-	if discriminant > 0 {
-		x1 := (-b + math.Sqrt(discriminant)) / (2 * a)
-		x2 := (-b - math.Sqrt(discriminant)) / (2 * a)
-		fmt.Printf("x1 = %.2f\n", x1)
-		fmt.Printf("x2 = %.2f\n", x2)
-	} else if discriminant == 0 {
-		x := -b / (2 * a)
-		fmt.Printf("x = %.2f\n", x)
-	} else {
-		fmt.Println("Нет действительных корней")
+func twoSum(nums []int, target int) []int {
+	for i, num1 := range nums {
+		for j, num2 := range nums {
+			if num1+num2 == target {
+				return []int{i, j}
+			}
+		}
 	}
+	return []int{}
+}
+
+func main() {
+	nums1 := []int{2, 7, 11, 15}
+	target1 := 9
+	result1 := twoSum(nums1, target1)
+	fmt.Printf("Input: nums = %v, target = %d, Output: %v\n", nums1, target1, result1)
+
+	nums2 := []int{3, 2, 4}
+	target2 := 6
+	result2 := twoSum(nums2, target2)
+	fmt.Printf("Input: nums = %v, target = %d, Output: %v\n", nums2, target2, result2)
+
+	nums3 := []int{3, 3}
+	target3 := 6
+	result3 := twoSum(nums3, target3)
+	fmt.Printf("Input: nums = %v, target = %d, Output: %v\n", nums3, target3, result3)
+
+	nums4 := []int{3, 3}
+	target4 := 9
+	result4 := twoSum(nums4, target4)
+	fmt.Printf("Input: nums = %v, target = %d, Output: %v\n", nums4, target4, result4)
 }
