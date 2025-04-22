@@ -37,7 +37,7 @@ func main() {
 		} else if solved2 > solved1 {
 			fmt.Println("Победил 2-ой студент")
 		} else {
-			fmt.Println("Победил 1-ый студент")
+			fmt.Println("Ничья")
 		}
 
 	}
