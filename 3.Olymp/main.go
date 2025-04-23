@@ -31,14 +31,14 @@ func main() {
 		} else {
 			break
 		}
-
-		if solved1 > solved2 {
-			fmt.Println("Победил 1-ый студент")
-		} else if solved2 > solved1 {
-			fmt.Println("Победил 2-ой студент")
-		} else {
-			fmt.Println("Ничья")
-		}
-
 	}
+
+	if solved1 > solved2 {
+		fmt.Println("Победил 1-ый студент")
+	} else if solved2 > solved1 {
+		fmt.Println("Победил 2-ой студент")
+	} else {
+		fmt.Println("Ничья")
+	}
+
 }
