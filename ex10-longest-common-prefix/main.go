@@ -22,45 +22,29 @@ func PrefixFinder(strs []string) string {
 }
 
 func main() {
-	var word1, word2, word3, word4, word5 string
-
-	fmt.Printf("Введите первое слово: ")
-	fmt.Scanln(&word1)
-
-	fmt.Printf("Введите второе слово: (или нажмите Enter, если нет): ")
-	fmt.Scanln(&word2)
-
-	fmt.Printf("Введите третье слово: (или нажмите Enter, если нет): ")
-	fmt.Scanln(&word3)
-
-	fmt.Printf("Введите четвертое слово: (или нажмите Enter, если нет) ")
-	fmt.Scanln(&word4)
-
-	fmt.Printf("Введите пятое слово: (или нажмите Enter, если нет) ")
-	fmt.Scanln(&word5)
-
-	var strs []string
-	if word1 != "" {
-		strs = append(strs, word1)
-
-	}
-	if word2 != "" {
-		strs = append(strs, word2)
-
-	}
-	if word3 != "" {
-		strs = append(strs, word3)
-
-	}
-	if word4 != "" {
-		strs = append(strs, word4)
-
-	}
-	if word5 != "" {
-		strs = append(strs, word5)
-
+	var numWords int
+	fmt.Printf("Введите количество слов: ")
+	_, err := fmt.Scanln(&numWords)
+	if err != nil {
+		fmt.Println("Ошибка ввода количество слов: ", err)
+		return
 	}
 
+	if numWords <= 0 {
+		fmt.Println("Пожалуйста, введите положительное количество слов. ")
+		return
+	}
+
+	strs := make([]string, numWords)
+	fmt.Println("Введите слова по одному:")
+	for i := 0; i < numWords; i++ {
+		fmt.Printf("Слово %d: ", i+1)
+		_, err := fmt.Scanln(&strs[i])
+		if err != nil {
+			fmt.Println("Ошибка ввода слова:", err)
+			return
+		}
+	}
 	result := PrefixFinder(strs)
-	fmt.Printf("Саммый длинный общий префикс: %s\n", result)
+	fmt.Printf("Саммый длинный общий префикс: %s", result)
 }
